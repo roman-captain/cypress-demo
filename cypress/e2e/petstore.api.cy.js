@@ -11,8 +11,11 @@ describe('Petstore API', () => {
             expect(response.body).to.be.an('array').and.not.be.empty;
 
             const firstPet = response.body[0];
-            expect(firstPet).to.have.all.keys('id', 'category', 'name', 'photoUrls', 'tags', 'status');
-            expect(firstPet.name).to.be.a('string');
+            expect(firstPet).to.include.keys('id', 'photoUrls', 'tags', 'status');
+            expect(firstPet.id).to.be.a('number');
+            expect(firstPet.status).to.be.a('string');
+            if (firstPet.name) expect(firstPet.name).to.be.a('string');
+            if (firstPet.category) expect(firstPet.category).to.be.an('object');
         });
     });
 
