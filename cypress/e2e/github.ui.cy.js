@@ -19,11 +19,14 @@ describe('GitHub UI Navigation - Happy Paths', () => {
         cy.title().should('include', 'Pricing');
     });
 
+    // GitHub serves an Octocaptcha challenge to automated visitors on the
+    // signup flow, so page content (form or captcha) is not deterministic.
+    // This test covers the entry point only: the CTA routes to /signup.
     it('should navigate to the Sign Up form', () => {
         cy.get('a[href*="/signup"]')
             .not('.js-prevent-focus-on-mobile-nav')
             .first()
             .click();
-        cy.contains('Create your free account').should('be.visible');
+        cy.url().should('include', '/signup');
     });
 });
