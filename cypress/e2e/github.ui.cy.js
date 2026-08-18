@@ -5,7 +5,7 @@ describe('GitHub UI Navigation - Happy Paths', () => {
 
     it('should navigate to the Sign In page', () => {
         cy.get('a[href="/login"]')
-            .not('.js-prevent-focus-on-mobile-nav')
+            .filter(':visible')
             .first()
             .click();
         cy.contains('h1', 'Sign in to GitHub').should('be.visible');
