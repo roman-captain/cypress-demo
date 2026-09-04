@@ -4,10 +4,7 @@ describe('GitHub UI Navigation - Happy Paths', () => {
     });
 
     it('should navigate to the Sign In page', () => {
-        cy.get('a[href="/login"]')
-            .filter(':visible')
-            .first()
-            .click();
+        cy.get('a[href="/login"][class*="hiddenBelowLg"]').click();
         cy.contains('h1', 'Sign in to GitHub').should('be.visible');
     });
 
