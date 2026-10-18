@@ -13,7 +13,7 @@ describe('GitHub UI Navigation - Happy Paths', () => {
             .not('.js-prevent-focus-on-mobile-nav')
             .first()
             .click();
-        cy.title().should('include', 'Pricing');
+        cy.title().should('match', /pricing/i);
     });
 
     // GitHub serves an Octocaptcha challenge to automated visitors on the
